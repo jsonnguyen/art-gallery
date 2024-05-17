@@ -43,3 +43,5 @@ const artworkSchema = new Schema({
 }, {
     timestamps: true
 });
+
+module.exports = mongoose.model('Artwork', artworkSchema);
