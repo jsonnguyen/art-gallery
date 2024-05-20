@@ -6,8 +6,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const user = req.user;
-    const artworks = await Artwork.find({})
+    const artworks = await Artwork.find({}).populate('user')
     res.json(artworks)
 }
 

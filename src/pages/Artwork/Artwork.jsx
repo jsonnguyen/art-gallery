@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as artworksAPI from '../../utilities/artwork-api'
+import ArtworkList from '../../components/ArtworkList/ArtworkList';
 
 export default function Artwork () {
     const [artworks, setArtworks] =useState([])
@@ -8,11 +9,16 @@ export default function Artwork () {
         async function getArtworks() {
             const artworks = await artworksAPI.getAllArtworks();
             setArtworks(artworks);
+            console.log("Fetched artworks:", artworks);
         }
         getArtworks();
     }, []);
 
     return (
+        <>
         <h1>Artworks</h1>
+        <ArtworkList artworkItems={artworks} />
+
+        </>
     )
 }
