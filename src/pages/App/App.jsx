@@ -6,6 +6,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NewArtworkPage from '../NewArtworkPage/NewArtworkPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
+import Artwork from '../Artwork/Artwork';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -19,6 +20,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/artworks/new" element={<NewArtworkPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/artworks" element={<Artwork />} />
             </Routes>
           </>
           :
