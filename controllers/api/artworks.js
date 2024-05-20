@@ -1,8 +1,15 @@
 const Artwork = require('../../models/artwork');
 
 module.exports = {
-    newArtwork
+    newArtwork,
+    index
 };
+
+async function index(req, res) {
+    const user = req.user;
+    const artworks = await Artwork.find({})
+    res.json(artworks)
+}
 
 async function newArtwork(req, res) {
     console.log('req.file:', req.file); // Add this line
