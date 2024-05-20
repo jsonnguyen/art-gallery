@@ -2,12 +2,13 @@ const Artwork = require('../../models/artwork');
 
 module.exports = {
     newArtwork,
-    index
+    index,
+    show
 };
 
 async function index(req, res) {
     const artworks = await Artwork.find({}).populate('user')
-    res.json(artworks)
+    res.json(artworks);
 }
 
 async function newArtwork(req, res) {
@@ -40,4 +41,9 @@ async function newArtwork(req, res) {
         console.log(error);
         res.status(500).json({ error: error.message });
     }
+}
+
+async function show(req, res) {
+    const artwork = await Artwork.findById(req.params.id);
+    res.jason(artwork);
 }

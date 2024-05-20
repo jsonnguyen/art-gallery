@@ -7,6 +7,7 @@ import NewArtworkPage from '../NewArtworkPage/NewArtworkPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Artwork from '../Artwork/Artwork';
+import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 import Galleries from '../Galleries/Galleries';
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="/orders" element={<OrderHistoryPage />} />
               <Route path="/artworks" element={<Artwork />} />
               <Route path="/galleries" element={<Galleries />} />
+              <Route path="/artworks/:id" element={<ArtworkDetail />} />
             </Routes>
           </>
           :
