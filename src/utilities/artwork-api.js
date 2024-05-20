@@ -9,3 +9,7 @@ export function getAllArtworks() {
 export function createNewArtwork(data) {
     return sendRequest(`${BASE_URL}/new`, 'POST', data);
 }
+
+export function getArtworkById(id) {
+    return sendRequest(`${BASE_URL}/${id}`);
+}
