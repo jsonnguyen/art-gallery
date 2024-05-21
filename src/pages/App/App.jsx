@@ -5,17 +5,19 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewArtworkPage from '../NewArtworkPage/NewArtworkPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
-import NavBar from '../../components/NavBar/NavBar';
+// import NavBar from '../../components/NavBar/NavBar';
 import Artwork from '../Artwork/Artwork';
 import Galleries from '../Galleries/Galleries';
 import LandingPage from '../LandingPage/LandingPage';
 import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
+import Header from '../../components/Header/Header';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
   return (
     <main className="App">
+      <Header user={user} setUser={setUser} />
       <Routes>
         {/* Always show the LandingPage at the root path */}
         <Route path="/" element={<LandingPage />} />

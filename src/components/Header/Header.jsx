@@ -1,14 +1,14 @@
 // src/components/Header/Header.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as userService from '../../utilities/users-service';
 import './Header.css';
 
 export default function Header({ user, setUser }) {
-  const handleLogout = () => {
-    // Add logout functionality here, e.g., remove user from state and localStorage
+  function handleLogOut() {
+    userService.logOut();
     setUser(null);
-    // Other logout actions if necessary
-  };
+  }
 
   return (
     <header className="Header">
@@ -18,10 +18,9 @@ export default function Header({ user, setUser }) {
         {user ? (
           <>
             <Link to="/artworks/new">New Artwork</Link>
-            <Link to="/orders">Order History</Link>
             <Link to="/artworks">Artworks</Link>
             <Link to="/galleries">Galleries</Link>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogOut}>Logout</button>
           </>
         ) : (
           <>

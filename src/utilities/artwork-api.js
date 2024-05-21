@@ -13,3 +13,7 @@ export function createNewArtwork(data) {
 export function getArtworkById(id) {
     return sendRequest(`${BASE_URL}/${id}`);
 }
+
+export function addComment(id, commentData) {
+    return sendRequest(`${BASE_URL}/${id}/comments`, 'POST', commentData);
+}

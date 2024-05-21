@@ -3,7 +3,8 @@ const Artwork = require('../../models/artwork');
 module.exports = {
     newArtwork,
     index,
-    show
+    show,
+    createComment
 };
 
 async function index(req, res) {
@@ -12,9 +13,6 @@ async function index(req, res) {
 }
 
 async function newArtwork(req, res) {
-    console.log('req.file:', req.file); 
-    console.log('req.body:', req.body); 
-
     const user = req.user._id;
     const { artType, title, date } = req.body;
 
@@ -47,4 +45,18 @@ async function show(req, res) {
     console.log(res)
     const artwork = await Artwork.findById(req.params.id);
     res.json(artwork);
+}
+
+async function createComment(req, res) {
+    const artwork = await Artwork.findById(req.params.id);
+    req.body.user = req.user._id;
+
+    artwork.comments.push(req.body);
+    try {
+        await artwork.save();
+        const updatedArtwork = await Artwork.findById(req.params.id).populate('comments.user');
+        res.json(updatedArtwork);
+    } catch (error) {
+        console.log(error)
+    }
 }
