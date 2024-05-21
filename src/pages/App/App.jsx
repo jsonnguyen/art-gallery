@@ -9,6 +9,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import Artwork from '../Artwork/Artwork';
 import Galleries from '../Galleries/Galleries';
 import LandingPage from '../LandingPage/LandingPage';
+import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/artworks" element={<Artwork />} />
             <Route path="/galleries" element={<Galleries />} />
+            <Route path="/artworks/:id" element={<ArtworkDetail />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
         )}

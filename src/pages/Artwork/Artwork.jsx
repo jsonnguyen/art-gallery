@@ -9,7 +9,6 @@ export default function Artwork () {
         async function getArtworks() {
             const artworks = await artworksAPI.getAllArtworks();
             setArtworks(artworks);
-            console.log("Fetched artworks:", artworks);
         }
         getArtworks();
     }, []);

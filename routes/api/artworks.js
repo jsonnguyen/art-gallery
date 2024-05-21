@@ -4,6 +4,7 @@ const artworkCtrl = require('../../controllers/api/artworks');
 const upload = require('../../config/upload');
 const ensuredLoggedIn = require('../../config/ensureLoggedIn')
 
+router.get('/:id', artworkCtrl.show);
 router.post('/new', upload.single('image'), ensuredLoggedIn, artworkCtrl.newArtwork);
 router.get('/', artworkCtrl.index);
 
