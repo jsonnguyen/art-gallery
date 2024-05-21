@@ -4,7 +4,6 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
     const options = { method };
 
     if (payload) {
-        // If payload is an instance of FormData, do not stringify and do not set Content-Type
         if (payload instanceof FormData) {
             options.body = payload;
         } else {

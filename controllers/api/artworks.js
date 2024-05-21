@@ -12,8 +12,8 @@ async function index(req, res) {
 }
 
 async function newArtwork(req, res) {
-    console.log('req.file:', req.file); // Add this line
-    console.log('req.body:', req.body); // Add this line
+    console.log('req.file:', req.file); 
+    console.log('req.body:', req.body); 
 
     const user = req.user._id;
     const { artType, title, date } = req.body;
@@ -44,6 +44,7 @@ async function newArtwork(req, res) {
 }
 
 async function show(req, res) {
+    console.log(res)
     const artwork = await Artwork.findById(req.params.id);
-    res.jason(artwork);
+    res.json(artwork);
 }
