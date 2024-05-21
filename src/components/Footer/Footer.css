@@ -1,0 +1,16 @@
+/* src/components/Footer/Footer.css */
+
+.Footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+  
+  .Footer p {
+    margin: 0;
+  }
+  

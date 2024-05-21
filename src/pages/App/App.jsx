@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
@@ -7,29 +7,40 @@ import NewArtworkPage from '../NewArtworkPage/NewArtworkPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Artwork from '../Artwork/Artwork';
-import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 import Galleries from '../Galleries/Galleries';
+import LandingPage from '../LandingPage/LandingPage';
+import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
   return (
     <main className="App">
-      { user ?
+      <Routes>
+        {/* Always show the LandingPage at the root path */}
+        <Route path="/" element={<LandingPage />} />
+
+        {/* Routes for authenticated users */}
+        {user && (
           <>
-            <NavBar user={user} setUser={setUser} />
-            <Routes>
-              {/* Route components in here */}
-              <Route path="/artworks/new" element={<NewArtworkPage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/artworks" element={<Artwork />} />
-              <Route path="/galleries" element={<Galleries />} />
-              <Route path="/artworks/:id" element={<ArtworkDetail />} />
-            </Routes>
+            <Route path="/artworks/new" element={<NewArtworkPage />} />
+            <Route path="/orders" element={<OrderHistoryPage />} />
+            <Route path="/artworks" element={<Artwork />} />
+            <Route path="/galleries" element={<Galleries />} />
+            <Route path="/artworks/:id" element={<ArtworkDetail />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </>
-          :
-          <AuthPage setUser={setUser} />
-      }
+        )}
+
+        {/* Routes for unauthenticated users */}
+        {!user && (
+          <>
+            <Route path="/signup" element={<AuthPage setUser={setUser} />} />
+            <Route path="/login" element={<AuthPage setUser={setUser} />} />
+            <Route path="*" element={<Navigate to="/signup" />} />
+          </>
+        )}
+      </Routes>
     </main>
   );
 }
