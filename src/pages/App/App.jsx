@@ -4,6 +4,7 @@ import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewArtworkPage from '../NewArtworkPage/NewArtworkPage';
+import NewGalleryPage from '../NewGalleryPage/NewGalleryPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 // import NavBar from '../../components/NavBar/NavBar';
 import Artwork from '../Artwork/Artwork';
@@ -11,6 +12,7 @@ import Galleries from '../Galleries/Galleries';
 import LandingPage from '../LandingPage/LandingPage';
 import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 import Header from '../../components/Header/Header';
+
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -26,6 +28,7 @@ export default function App() {
         {user && (
           <>
             <Route path="/artworks/new" element={<NewArtworkPage />} />
+            <Route path="/galleries/new" element={<NewGalleryPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/artworks" element={<Artwork />} />
             <Route path="/galleries" element={<Galleries />} />
