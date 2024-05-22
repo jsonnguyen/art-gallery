@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import * as artworksAPI from '../../utilities/artwork-api';
 import Comments from "../../components/Comments/Comments";
 
-export default function ArtworkDetail() {
+export default function ArtworkDetail({ user }) {
     const { id } = useParams();
     const [artwork, setArtwork] = useState(null);
 
@@ -29,7 +29,7 @@ export default function ArtworkDetail() {
             <h1>{artwork.title}</h1>
             <img src={artwork.image.url} alt={artwork.title} />
             <p>{artwork.artType}</p>
-            <Comments artworkId={id} />
+            <Comments artworkId={id} user={user} />
         </div>
     );
 }
