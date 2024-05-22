@@ -6,7 +6,7 @@ export default function CommentForm({ artworkId, refreshComments }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        if (!content.trim()) return;
+        if (!content.trim()) return;  
 
         try {
             const commentData = { content };
