@@ -6,13 +6,13 @@ export default function CommentForm({ artworkId, refreshComments }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        if (!content.trim()) return;  // Prevent empty comments
+        if (!content.trim()) return;  
 
         try {
             const commentData = { content };
             await artworksAPI.addComment(artworkId, commentData);
             setContent('');
-            refreshComments();  // Refresh the comments after a new one is added
+            refreshComments(); 
         } catch (error) {
             console.error("Failed to add comment:", error);
         }

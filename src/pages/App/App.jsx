@@ -12,6 +12,7 @@ import Galleries from '../Galleries/Galleries';
 import LandingPage from '../LandingPage/LandingPage';
 import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer'
 
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
           </>
         )}
       </Routes>
+      <Footer />
     </main>
   );
 }

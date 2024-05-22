@@ -1,13 +1,10 @@
 // src/pages/LandingPage/LandingPage.jsx
 import React from 'react';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 import './LandingPage.css';
 
 export default function LandingPage({ user, setUser }) {
   return (
     <div className="LandingPage">
-      <Header user={user} setUser={setUser} />
       <main>
         <section className="hero">
           <h1>Welcome to the Virtual Art Gallery Tour</h1>
@@ -25,7 +22,6 @@ export default function LandingPage({ user, setUser }) {
           </ul>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }
