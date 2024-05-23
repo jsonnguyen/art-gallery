@@ -14,7 +14,6 @@ export default function ArtworkDetail({ user }) {
             try {
                 const artwork = await artworksAPI.getArtworkById(id);
                 setArtwork(artwork);
-                console.log(artwork);
             } catch (error) {
                 console.error("Failed to fetch artwork:", error);
             }
