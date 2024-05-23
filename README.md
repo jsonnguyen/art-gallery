@@ -3,9 +3,10 @@ Virtual Art Gallery Tour is a web application that allows users to explore, uplo
 
 # Screenshot
 
-<img src="">
-<img src="">
-<img src="">
+<img src="./public/home.PNG">
+<img src="./public/artworks.PNG">
+<img src="./public/artwork detail.PNG">
+<img src="./public/artworkform.PNG">
 
 # Technologies Used
 
