@@ -17,3 +17,7 @@ export function getArtworkById(id) {
 export function addComment(id, commentData) {
     return sendRequest(`${BASE_URL}/${id}/comments`, 'POST', commentData);
 }
+
+export function deleteArtwork(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}
