@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function ArtworkListItem({ artworkItem }) {
     return (
-        <Link to={artworkItem._id}>
+        <Link to={artworkItem._id} className="artwork-link">
             <div className='artwork'>
                 <img src={artworkItem.image.url} alt="artwork" />
                 <div className='artwork-card-details'>

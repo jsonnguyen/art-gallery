@@ -1,20 +1,16 @@
-.artwork-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px; /* Optional: set a max width for the container */
-    margin: 0 auto; /* Center the container */
-}
-
 .artwork {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
-    height: 40vh; /* Set card height based on viewport height */
+    height: 30vh; /* Set card height to 30% of the viewport height */
     display: flex;
     flex-direction: column;
+}
+
+.artwork-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
 }
 
 .artwork img {
@@ -31,16 +27,24 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden; /* Ensure details are contained within the card */
+}
+
+.artwork-card-details h2, .artwork-card-details p {
+    margin: 0; /* Ensure no default margins are adding unwanted space */
+    padding: 5px 0; /* Add padding for space between text */
 }
 
 @media (max-width: 1024px) {
     .artwork-container {
         grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+        gap: 30px; /* Maintain the same gap for medium screens */
     }
 }
 
 @media (max-width: 768px) {
     .artwork-container {
         grid-template-columns: 1fr; /* Single column for small screens */
+        gap: 20px; /* Optionally reduce the gap for small screens */
     }
 }

@@ -1,10 +1,11 @@
 .artwork-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
-    gap: 30px; /* Increase the gap between grid items */
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 20px;
     padding: 20px;
     max-width: 1200px; /* Optional: set a max width for the container */
     margin: 0 auto; /* Center the container */
+    min-height: 100vh; /* Set minimum height to 100% of the viewport height */
 }
 
 @media (max-width: 1024px) {
