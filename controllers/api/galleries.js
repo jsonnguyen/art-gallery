@@ -3,7 +3,9 @@ const Gallery = require('../../models/gallery');
 module.exports = {
     newGallery,
     getGalleries,
-    getGalleryById
+    getGalleryById,
+    deleteGallery,
+    addArtworkToGallery
 };
 
 async function newGallery(req, res) {
@@ -39,6 +41,28 @@ async function getGalleries(req, res) {
 async function getGalleryById(req, res) {
     try {
         const gallery = await Gallery.findById(req.params.id).populate('artworks');
+        res.json(gallery);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error.message });
+    }
+}
+
+async function deleteGallery(req, res) {
+    try {
+        const gallery = await Gallery.findByIdAndDelete(req.params.id);
+        res.json(gallery);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error.message });
+    }
+}
+
+async function addArtworkToGallery(req, res) {
+    try {
+        const gallery = await Gallery.findById(req.params.id);
+        gallery.artworks.push(req.body.artworkId);
+        await gallery.save();
         res.json(gallery);
     } catch (error) {
         console.log(error);

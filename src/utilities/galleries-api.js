@@ -13,3 +13,11 @@ export async function create(galleryData) {
 export async function getGalleryById(id) {
     return sendRequest(`${BASE_URL}/${id}`);
 }
+
+export async function deleteGallery(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}
+
+export async function addArtworkToGallery(id, artworkId) {
+    return sendRequest(`${BASE_URL}/${id}/artworks`, 'POST', { artworkId });
+}

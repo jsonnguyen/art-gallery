@@ -1,12 +1,16 @@
 // src/pages/GalleryDetailPage/GalleryDetailPage.jsx
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as galleriesAPI from '../../utilities/galleries-api';
+import * as artworksAPI from '../../utilities/artwork-api';
 import './GalleryDetailPage.css';
 
 export default function GalleryDetailPage() {
   const { id } = useParams();
   const [gallery, setGallery] = useState(null);
+  const [artworks, setArtworks] = useState([]);
+  const [selectedArtwork, setSelectedArtwork] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchGallery() {
@@ -20,21 +24,66 @@ export default function GalleryDetailPage() {
     fetchGallery();
   }, [id]);
 
+  useEffect(() => {
+    async function fetchArtworks() {
+      try {
+        const fetchedArtworks = await artworksAPI.getAllArtworks();
+        setArtworks(fetchedArtworks);
+      } catch (error) {
+        console.error('Error fetching artworks:', error);
+      }
+    }
+    fetchArtworks();
+  }, []);
+
+  async function handleAddArtwork() {
+    if (!selectedArtwork) return;
+
+    try {
+      await galleriesAPI.addArtworkToGallery(id, selectedArtwork);
+      const updatedGallery = await galleriesAPI.getGalleryById(id);
+      setGallery(updatedGallery);
+      setSelectedArtwork(''); // Reset the selected artwork
+    } catch (error) {
+      console.error('Error adding artwork:', error);
+    }
+  }
+
+  async function handleDeleteArtwork(artworkId) {
+    try {
+      // Remove artwork from the gallery
+      const updatedGallery = { ...gallery, artworks: gallery.artworks.filter(a => a._id !== artworkId) };
+      await galleriesAPI.create(updatedGallery); // Assuming create function can update if gallery exists
+      setGallery(updatedGallery);
+    } catch (error) {
+      console.error('Error deleting artwork:', error);
+    }
+  }
+
   if (!gallery) return <h1>Loading...</h1>;
 
   return (
     <div className="gallery-detail">
       <h1>{gallery.name}</h1>
-      <div className="artworks">
+      <div className="artworks-gallery">
         {gallery.artworks.map(artwork => (
           <div key={artwork._id} className="artwork-item">
-            <img src={artwork.image.url} alt={artwork.title} />
+            <img src={artwork.image.url} alt={artwork.title} className="artwork-image"/>
             <h2>{artwork.title}</h2>
             <p>{artwork.artType}</p>
             <p>{new Date(artwork.date).toLocaleDateString()}</p>
+            <button onClick={() => handleDeleteArtwork(artwork._id)} className="cta-button delete-button">Delete Artwork</button>
           </div>
         ))}
       </div>
+      <h2>Add Artwork to Gallery</h2>
+      <select value={selectedArtwork} onChange={(e) => setSelectedArtwork(e.target.value)}>
+        <option value="">Select an artwork</option>
+        {artworks.map(artwork => (
+          <option key={artwork._id} value={artwork._id}>{artwork.title}</option>
+        ))}
+      </select>
+      <button onClick={handleAddArtwork} className="cta-button">Add Artwork</button>
     </div>
   );
 }
