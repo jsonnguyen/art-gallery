@@ -1,7 +1,10 @@
 .artwork-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
     gap: 20px;
+    padding: 20px;
+    max-width: 1200px; /* Optional: set a max width for the container */
+    margin: 0 auto; /* Center the container */
 }
 
 .artwork {
@@ -9,16 +12,35 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
-    width: 200px;
+    height: 40vh; /* Set card height based on viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
 .artwork img {
     width: 100%;
-    height: auto;
+    height: 60%; /* Make the image occupy 60% of the card height */
+    object-fit: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
 .artwork-card-details {
     padding: 10px;
+    flex: 1; /* Ensure details take the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+    .artwork-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .artwork-container {
+        grid-template-columns: 1fr; /* Single column for small screens */
+    }
 }

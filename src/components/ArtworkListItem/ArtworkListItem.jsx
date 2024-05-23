@@ -2,9 +2,8 @@ import './ArtworkListItem.css'
 import { Link } from 'react-router-dom';
 
 export default function ArtworkListItem({ artworkItem }) {
-    return(
-        <div className="artwork-container">
-            <Link to={artworkItem._id}>
+    return (
+        <Link to={artworkItem._id}>
             <div className='artwork'>
                 <img src={artworkItem.image.url} alt="artwork" />
                 <div className='artwork-card-details'>
@@ -14,7 +13,6 @@ export default function ArtworkListItem({ artworkItem }) {
                     <p>{artworkItem.date}</p>
                 </div>
             </div>
-            </Link>
-        </div>
+        </Link>
     );
 }
