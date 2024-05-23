@@ -6,9 +6,9 @@
   color: #fff;
   text-align: center;
   padding: 20px 0;
-  position: fixed; /* Change to fixed */
+  position: fixed;
   width: 100%;
-  bottom: 0; /* Add this line */
+  bottom: 0;
 }
   
   .Footer p {
