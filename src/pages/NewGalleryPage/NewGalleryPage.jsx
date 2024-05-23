@@ -8,12 +8,16 @@ export default function NewGalleryPage() {
   const [formData, setFormData] = useState({ name: '' });
   const [artworks, setArtworks] = useState([]);
   const [selectedArtworks, setSelectedArtworks] = useState([]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchArtworks() {
-      const fetchedArtworks = await artworksAPI.getAllArtworks();
-      setArtworks(fetchedArtworks);
+      try {
+        const fetchedArtworks = await artworksAPI.getAllArtworks();
+        setArtworks(fetchedArtworks);
+      } catch (error) {
+        console.error('Error fetching artworks:', error);
+      }
     }
     fetchArtworks();
   }, []);
@@ -37,10 +41,12 @@ export default function NewGalleryPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { ...formData, artworks: selectedArtworks };
+    console.log('Form data to be sent:', data);  // Debug log to see the form data
+
     try {
       const response = await galleriesAPI.create(data);
       console.log('Gallery created successfully', response);
-      navigate('/galleries');
+      navigate(`/galleries/${response._id}`); // Redirect to the gallery detail page after creation
     } catch (error) {
       console.error('Error creating gallery', error);
     }
@@ -50,7 +56,14 @@ export default function NewGalleryPage() {
     <>
       <h1>Create New Gallery</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Gallery Name" required />
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          placeholder="Gallery Name"
+          required
+        />
         <h2>Select Artworks</h2>
         {artworks.map(artwork => (
           <div key={artwork._id}>

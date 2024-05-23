@@ -10,11 +10,12 @@ module.exports = {
 
 async function newGallery(req, res) {
     const user = req.user._id;
-    const { name } = req.body;
+    const { name, artworks } = req.body;
 
     const gallery = new Gallery({
         user,
-        name
+        name,
+        artworks // include artworks in the gallery creation
     });
 
     try {
