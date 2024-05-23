@@ -1,5 +1,6 @@
 // src/pages/NewGalleryPage/NewGalleryPage.jsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as galleriesAPI from '../../utilities/galleries-api';
 import * as artworksAPI from '../../utilities/artwork-api';
 
@@ -7,6 +8,7 @@ export default function NewGalleryPage() {
   const [formData, setFormData] = useState({ name: '' });
   const [artworks, setArtworks] = useState([]);
   const [selectedArtworks, setSelectedArtworks] = useState([]);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     async function fetchArtworks() {
@@ -38,6 +40,7 @@ export default function NewGalleryPage() {
     try {
       const response = await galleriesAPI.create(data);
       console.log('Gallery created successfully', response);
+      navigate('/galleries');
     } catch (error) {
       console.error('Error creating gallery', error);
     }

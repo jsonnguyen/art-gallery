@@ -9,3 +9,7 @@ export async function getAll() {
 export async function create(galleryData) {
     return sendRequest(BASE_URL, 'POST', galleryData);
 }
+
+export async function getGalleryById(id) {
+    return sendRequest(`${BASE_URL}/${id}`);
+}

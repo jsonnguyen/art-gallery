@@ -1,0 +1,32 @@
+/* src/pages/GalleryDetailPage/GalleryDetailPage.css */
+
+.gallery-detail {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .artworks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .artwork-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .artwork-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .artwork-item h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  

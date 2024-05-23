@@ -5,5 +5,6 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 router.post('/', ensureLoggedIn, galleriesCtrl.newGallery);
 router.get('/', ensureLoggedIn, galleriesCtrl.getGalleries);
+router.get('/:id', ensureLoggedIn, galleriesCtrl.getGalleryById);
 
 module.exports = router;
