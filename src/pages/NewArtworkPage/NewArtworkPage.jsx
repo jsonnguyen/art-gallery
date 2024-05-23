@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as artworksAPI from '../../utilities/artwork-api'
 
 export default function NewArtworkPage() {
+  const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
     artType: '',
@@ -31,7 +33,8 @@ export default function NewArtworkPage() {
 
     try {
       const response = await artworksAPI.createNewArtwork(data);
-      console.log('File uploaded successfully', response);
+      console.log('File uploaded successfully', response._id);
+      navigate(`/artworks/${response._id}`)
     } catch (error) {
       console.error('Error uploading file', error);
     }
