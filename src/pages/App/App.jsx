@@ -35,7 +35,7 @@ export default function App() {
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/artworks" element={<Artwork />} />
             <Route path="/galleries" element={<Galleries />} />
-            <Route path="/artworks/:id" element={<ArtworkDetail />} />
+            <Route path="/artworks/:id" element={<ArtworkDetail user={user} />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
         )}

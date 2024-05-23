@@ -42,8 +42,7 @@ async function newArtwork(req, res) {
 }
 
 async function show(req, res) {
-    console.log(res)
-    const artwork = await Artwork.findById(req.params.id);
+    const artwork = await Artwork.findById(req.params.id).populate('comments.user');
     res.json(artwork);
 }
 
