@@ -6,9 +6,11 @@ import * as THREE from 'three';
 import { useDrag } from '@use-gesture/react';
 import { useSpring, a } from '@react-spring/three';
 
+// Extend THREE namespace with geometries and materials
 extend({
   BoxBufferGeometry: THREE.BoxGeometry,
   PlaneBufferGeometry: THREE.PlaneGeometry,
+  SphereBufferGeometry: THREE.SphereGeometry,
   MeshStandardMaterial: THREE.MeshStandardMaterial,
 });
 
