@@ -4,8 +4,15 @@
 }
 
 .hero {
-  background-color: var(--tan);
-  padding: 50px 20px;
+  background: url('/Users/yamini/code/art-gallery/src/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 100px 20px; /* Increase padding for better spacing */
+  color: #fff; /* Set text color to white for better contrast */
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto; /* Center the content horizontally */
 }
 
 .hero h1 {
@@ -22,28 +29,14 @@
   display: inline-block;
   padding: 10px 20px;
   font-size: 1.2em;
-  color: var(--white);
-  background-color: var(--secondary);
+  color: #fff;
+  background-color: #007bff; /* Update button color */
   border: none;
   border-radius: 5px;
   text-decoration: none;
+  transition: background-color 0.3s ease; /* Add transition effect */
 }
 
-.features {
-  padding: 20px;
-}
-
-.features h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-.features ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.features li {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+.cta-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
 }
