@@ -1,5 +1,5 @@
 const multer = require('multer');
-const multerS3 = require('multer-s3-v3');  // Note the difference
+const multerS3 = require('multer-s3-v3');
 const s3 = require('./aws-config');
 
 const upload = multer({
