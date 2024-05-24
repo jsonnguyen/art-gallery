@@ -1,3 +1,4 @@
+//src/App/App.jsx
 import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/artworks/new" element={<NewArtworkPage />} />
             <Route path="/galleries/new" element={<NewGalleryPage />} />
             <Route path="/galleries/:id" element={<GalleryDetailPage />} />
+            <Route path="/galleries" element={<Galleries />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/artworks" element={<Artwork />} />
             <Route path="/all-galleries" element={<AllGalleries />} />

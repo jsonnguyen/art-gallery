@@ -1,3 +1,5 @@
+// src/components/Header/Header.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
@@ -19,7 +21,7 @@ export default function Header({ user, setUser }) {
             <Link to="/all-galleries">All Galleries</Link>
             <Link to="/artworks/new">New Artwork</Link>
             <Link to="/artworks">Artworks</Link>
-            <Link to="/galleries">Galleries</Link>
+            <Link to="/galleries">My Galleries</Link> {/* Updated link */}
             <button onClick={handleLogOut}>Logout</button>
           </>
         ) : (

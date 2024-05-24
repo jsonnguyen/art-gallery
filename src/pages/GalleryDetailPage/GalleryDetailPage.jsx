@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import * as galleriesAPI from '../../utilities/galleries-api';
 import * as artworksAPI from '../../utilities/artwork-api';
 import './GalleryDetailPage.css';
+import VRGallery from '../../components/VRGallery/VRGallery';
 
 export default function GalleryDetailPage() {
   const { id } = useParams();
@@ -51,7 +52,6 @@ export default function GalleryDetailPage() {
 
   async function handleDeleteArtwork(artworkId) {
     try {
-      // Remove artwork from the gallery
       const updatedGallery = { ...gallery, artworks: gallery.artworks.filter(a => a._id !== artworkId) };
       await galleriesAPI.create(updatedGallery); // Assuming create function can update if gallery exists
       setGallery(updatedGallery);
@@ -84,6 +84,8 @@ export default function GalleryDetailPage() {
         ))}
       </select>
       <button onClick={handleAddArtwork} className="cta-button">Add Artwork</button>
+      <h2>View Gallery in VR</h2>
+      <VRGallery artworks={gallery.artworks} />
     </div>
   );
 }

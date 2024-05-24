@@ -1,3 +1,4 @@
+//controllers/api/galleries.js
 const Gallery = require('../../models/gallery');
 
 module.exports = {
