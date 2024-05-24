@@ -1,6 +1,6 @@
 .artwork {
     background-color: #ffffff;
-    border: 1px solid #ccc;
+    border: 1px solid #a49380;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -17,7 +17,7 @@
 
 .artwork img {
     max-width: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #a49380;
 }
 
 .artwork-card-details {
@@ -27,11 +27,11 @@
 .artwork-card-details h2 {
     font-size: 1.5em;
     margin-bottom: 0.5em;
-    color: #003366; /* Deep blue */
+    color: #3b3054; /* Rich purple */
 }
 
 .artwork-card-details p {
     margin: 0.2em 0;
     font-size: 1em;
-    color: #666666; /* Grey */
+    color: #5e5252; /* Grey */
 }
