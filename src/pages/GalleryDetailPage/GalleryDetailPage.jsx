@@ -11,6 +11,7 @@ export default function GalleryDetailPage() {
   const [gallery, setGallery] = useState(null);
   const [artworks, setArtworks] = useState([]);
   const [selectedArtwork, setSelectedArtwork] = useState('');
+  const [vrMode, setVrMode] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function GalleryDetailPage() {
       try {
         const fetchedGallery = await galleriesAPI.getGalleryById(id);
         setGallery(fetchedGallery);
+        console.log('Fetched Gallery:', fetchedGallery); // Debug
       } catch (error) {
         console.error('Error fetching gallery:', error);
       }
@@ -30,6 +32,7 @@ export default function GalleryDetailPage() {
       try {
         const fetchedArtworks = await artworksAPI.getAllArtworks();
         setArtworks(fetchedArtworks);
+        console.log('Fetched Artworks:', fetchedArtworks); // Debug
       } catch (error) {
         console.error('Error fetching artworks:', error);
       }
@@ -65,27 +68,34 @@ export default function GalleryDetailPage() {
   return (
     <div className="gallery-detail">
       <h1>{gallery.name}</h1>
-      <div className="artworks-gallery">
-        {gallery.artworks.map(artwork => (
-          <div key={artwork._id} className="artwork-item">
-            <img src={artwork.image.url} alt={artwork.title} className="artwork-image"/>
-            <h2>{artwork.title}</h2>
-            <p>{artwork.artType}</p>
-            <p>{new Date(artwork.date).toLocaleDateString()}</p>
-            <button onClick={() => handleDeleteArtwork(artwork._id)} className="cta-button delete-button">Delete Artwork</button>
+      <button onClick={() => setVrMode(!vrMode)} className="cta-button">{vrMode ? 'Exit VR' : 'View in VR'}</button>
+      {vrMode ? (
+        <div className="canvas-container">
+          <VRGallery artworks={gallery.artworks} />
+        </div>
+      ) : (
+        <>
+          <div className="artworks-gallery">
+            {gallery.artworks.map(artwork => (
+              <div key={artwork._id} className="artwork-item">
+                <img src={artwork.image.url} alt={artwork.title} className="artwork-image"/>
+                <h2>{artwork.title}</h2>
+                <p>{artwork.artType}</p>
+                <p>{new Date(artwork.date).toLocaleDateString()}</p>
+                <button onClick={() => handleDeleteArtwork(artwork._id)} className="cta-button delete-button">Delete Artwork</button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <h2>Add Artwork to Gallery</h2>
-      <select value={selectedArtwork} onChange={(e) => setSelectedArtwork(e.target.value)}>
-        <option value="">Select an artwork</option>
-        {artworks.map(artwork => (
-          <option key={artwork._id} value={artwork._id}>{artwork.title}</option>
-        ))}
-      </select>
-      <button onClick={handleAddArtwork} className="cta-button">Add Artwork</button>
-      <h2>View Gallery in VR</h2>
-      <VRGallery artworks={gallery.artworks} />
+          <h2>Add Artwork to Gallery</h2>
+          <select value={selectedArtwork} onChange={(e) => setSelectedArtwork(e.target.value)}>
+            <option value="">Select an artwork</option>
+            {artworks.map(artwork => (
+              <option key={artwork._id} value={artwork._id}>{artwork.title}</option>
+            ))}
+          </select>
+          <button onClick={handleAddArtwork} className="cta-button">Add Artwork</button>
+        </>
+      )}
     </div>
   );
 }

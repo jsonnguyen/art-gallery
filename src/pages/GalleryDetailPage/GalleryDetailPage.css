@@ -4,16 +4,16 @@
     text-align: center;
     font-family: Arial, sans-serif;
     margin: 20px;
-  }
-  
-  .artworks-gallery {
+}
+
+.artworks-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-  }
-  
-  .artwork-item {
+}
+
+.artwork-item {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
@@ -21,19 +21,19 @@
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.2s;
-  }
-  
-  .artwork-item:hover {
+}
+
+.artwork-item:hover {
     transform: scale(1.05);
-  }
-  
-  .artwork-image {
+}
+
+.artwork-image {
     width: 100%;
     height: auto;
     border-radius: 5px;
-  }
-  
-  .cta-button {
+}
+
+.cta-button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 1.2em;
@@ -44,9 +44,13 @@
     text-decoration: none;
     cursor: pointer;
     margin: 10px 0;
-  }
-  
-  .delete-button {
+}
+
+.delete-button {
     background-color: #dc3545;
-  }
-  
+}
+
+.canvas {
+    height: 80vh;
+    width: 100%;
+}

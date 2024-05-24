@@ -1,0 +1,11 @@
+/* src/components/VRGallery/VRGallery.css */
+.canvas-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  
+  canvas {
+    display: block;
+  }
+  
