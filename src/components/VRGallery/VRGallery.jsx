@@ -1,5 +1,5 @@
 // src/components/VRGallery/VRGallery.jsx
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -64,6 +64,18 @@ function GalleryRoom({ artworks }) {
   );
 }
 
+function LightSwitch({ position, isOn, toggleLight }) {
+  return (
+    <>
+      <mesh position={position} onClick={toggleLight}>
+        <sphereBufferGeometry args={[0.2, 32, 32]} />
+        <meshStandardMaterial color={isOn ? 'yellow' : 'gray'} />
+      </mesh>
+      {isOn && <pointLight position={position} intensity={1} />}
+    </>
+  );
+}
+
 function Controls() {
   const ref = useRef();
   const [, set] = useSpring(() => ({ position: [0, 0, 0], rotation: [0, 0, 0] }));
@@ -81,8 +93,18 @@ function Controls() {
 }
 
 export default function VRGallery({ artworks }) {
+  const [lights, setLights] = useState([false, false, false]);
+
+  const toggleLight = (index) => {
+    setLights((prevLights) => {
+      const newLights = [...prevLights];
+      newLights[index] = !newLights[index];
+      return newLights;
+    });
+  };
+
   useEffect(() => {
-    console.log('Artworks in VRGallery:', artworks);
+    console.log('Artworks in VRGallery:', artworks); // Debug
   }, [artworks]);
 
   return (
@@ -92,6 +114,9 @@ export default function VRGallery({ artworks }) {
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
         <Controls />
         <GalleryRoom artworks={artworks} />
+        <LightSwitch position={[5, 5, -5]} isOn={lights[0]} toggleLight={() => toggleLight(0)} />
+        <LightSwitch position={[-5, 5, -5]} isOn={lights[1]} toggleLight={() => toggleLight(1)} />
+        <LightSwitch position={[0, 5, 5]} isOn={lights[2]} toggleLight={() => toggleLight(2)} />
       </Canvas>
     </div>
   );
