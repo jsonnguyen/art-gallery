@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Modal from '../Modal/Modal';
 import './ArtworkListItem.css';
+import Comments from '../Comments/Comments';
 
-export default function ArtworkListItem({ artworkItem }) {
+export default function ArtworkListItem({ artworkItem, user }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const formattedDate = new Date(artworkItem.date).toLocaleDateString('en-US', {
@@ -30,6 +31,7 @@ export default function ArtworkListItem({ artworkItem }) {
                 <p>Art Type: {artworkItem.artType}</p>
                 <p>Date: {formattedDate}</p>
                 <p>Description: {artworkItem.description}</p>
+                <Comments artworkId={artworkItem._id} user={user} />
             </Modal>
         </>
     );
