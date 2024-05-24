@@ -2,7 +2,8 @@ const Gallery = require('../../models/gallery');
 
 module.exports = {
     newGallery,
-    getGalleries,
+    getUserGalleries,
+    getAllGalleries,
     getGalleryById,
     deleteGallery,
     addArtworkToGallery
@@ -15,7 +16,7 @@ async function newGallery(req, res) {
     const gallery = new Gallery({
         user,
         name,
-        artworks // include artworks in the gallery creation
+        artworks
     });
 
     try {
@@ -27,11 +28,21 @@ async function newGallery(req, res) {
     }
 }
 
-async function getGalleries(req, res) {
+async function getUserGalleries(req, res) {
     const user = req.user._id;
 
     try {
         const galleries = await Gallery.find({ user }).populate('artworks');
+        res.json(galleries);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error.message });
+    }
+}
+
+async function getAllGalleries(req, res) {
+    try {
+        const galleries = await Gallery.find({}).populate('user').populate('artworks');
         res.json(galleries);
     } catch (error) {
         console.log(error);
@@ -51,7 +62,11 @@ async function getGalleryById(req, res) {
 
 async function deleteGallery(req, res) {
     try {
-        const gallery = await Gallery.findByIdAndDelete(req.params.id);
+        const gallery = await Gallery.findById(req.params.id);
+        if (gallery.user.toString() !== req.user._id) {
+            return res.status(403).json({ error: 'Unauthorized to delete this gallery' });
+        }
+        await gallery.remove();
         res.json(gallery);
     } catch (error) {
         console.log(error);

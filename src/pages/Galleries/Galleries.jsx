@@ -10,7 +10,7 @@ export default function Galleries() {
 
   useEffect(() => {
     async function fetchGalleries() {
-      const fetchedGalleries = await galleriesAPI.getAll();
+      const fetchedGalleries = await galleriesAPI.getUserGalleries();
       setGalleries(fetchedGalleries);
     }
     fetchGalleries();
@@ -29,7 +29,7 @@ export default function Galleries() {
 
   return (
     <>
-      <h1>Galleries</h1>
+      <h1>My Galleries</h1>
       <Link to="/galleries/new" className="cta-button">Create New Gallery</Link>
       <div className="galleries-list">
         {galleries.map(gallery => (

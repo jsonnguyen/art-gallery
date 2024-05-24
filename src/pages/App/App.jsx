@@ -14,7 +14,7 @@ import ArtworkDetail from '../ArtworkDetail/ArtworkDetail';
 import GalleryDetailPage from '../GalleryDetailPage/GalleryDetailPage';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer'
-
+import AllGalleries from '../AllGalleries/AllGalleries';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -35,10 +35,12 @@ export default function App() {
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/artworks" element={<Artwork />} />
             <Route path="/galleries" element={<Galleries />} />
+            <Route path="/all-galleries" element={<AllGalleries />} />
             <Route path="/artworks/:id" element={<ArtworkDetail user={user} />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
         )}
+        
 
         {/* Routes for unauthenticated users */}
         {!user && (
