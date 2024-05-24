@@ -4,7 +4,7 @@
 }
 
 .hero {
-  background: url('/Users/yamini/code/art-gallery/src/background.jpg') no-repeat center center fixed;
+  background: url('../../background.jpg') no-repeat center center fixed;
   background-size: cover;
   padding: 100px 20px;
   color: #fff;
