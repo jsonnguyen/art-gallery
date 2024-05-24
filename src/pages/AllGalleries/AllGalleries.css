@@ -2,42 +2,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.user-section {
+  }
+  
+  .user-section {
     margin: 20px 0;
-}
-
-.galleries-list {
+  }
+  
+  .galleries-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #f7e8de; /* Soft pink background */
-}
-
-.gallery-item {
+    background-color: var(--light-tan);
+  }
+  
+  .gallery-item {
     margin: 10px;
     padding: 10px;
-    border: 1px solid #a49380;
+    border: 1px solid var(--accent);
     border-radius: 5px;
     width: 200px;
     text-align: center;
-    background-color: #ffffff;
-}
-
-.cta-button {
+    background-color: var(--white);
+  }
+  
+  .cta-button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 1.2em;
-    color: #ffffff;
-    background-color: #5643fa; /* Deep blue */
+    color: var(--white);
+    background-color: var(--secondary);
     border: none;
     border-radius: 5px;
     text-decoration: none;
     cursor: pointer;
     margin: 5px;
-}
-
-.cta-button:hover {
-    background-color: #4231c8; /* Darker blue */
-}
+  }
+  
+  .cta-button:hover {
+    background-color: var(--primary);
+  }
+  

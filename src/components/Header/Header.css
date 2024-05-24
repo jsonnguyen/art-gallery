@@ -1,6 +1,6 @@
 .Header {
-  background-color: #3b3054; /* Rich purple */
-  color: white;
+  background-color: var(--primary);
+  color: var(--white);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -18,9 +18,9 @@
 }
 
 .Header nav a, .Header nav button {
-  color: white;
+  color: var(--white);
   text-decoration: none;
-  background-color: #5643fa; /* Deep blue */
+  background-color: var(--secondary);
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
@@ -29,5 +29,5 @@
 }
 
 .Header nav a:hover, .Header nav button:hover {
-  background-color: #4231c8; /* Darker blue */
+  background-color: var(--primary);
 }

@@ -1,6 +1,6 @@
 .artwork {
-    background-color: #ffffff;
-    border: 1px solid #a49380;
+    background-color: var(--white);
+    border: 1px solid var(--accent);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -8,30 +8,31 @@
     width: 300px;
     text-align: center;
     cursor: pointer;
-}
-
-.artwork:hover {
+  }
+  
+  .artwork:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.artwork img {
+  }
+  
+  .artwork img {
     max-width: 100%;
-    border-bottom: 1px solid #a49380;
-}
-
-.artwork-card-details {
+    border-bottom: 1px solid var(--accent);
+  }
+  
+  .artwork-card-details {
     padding: 15px;
-}
-
-.artwork-card-details h2 {
+  }
+  
+  .artwork-card-details h2 {
     font-size: 1.5em;
     margin-bottom: 0.5em;
-    color: #3b3054; /* Rich purple */
-}
-
-.artwork-card-details p {
+    color: var(--primary);
+  }
+  
+  .artwork-card-details p {
     margin: 0.2em 0;
     font-size: 1em;
-    color: #5e5252; /* Grey */
-}
+    color: var(--text-light);
+  }
+  
