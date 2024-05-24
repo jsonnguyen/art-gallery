@@ -20,7 +20,7 @@ export default function GalleryDetailPage() {
       try {
         const fetchedGallery = await galleriesAPI.getGalleryById(id);
         setGallery(fetchedGallery);
-        console.log('Fetched Gallery:', fetchedGallery); // Debug
+        console.log('Fetched Gallery:', fetchedGallery);
       } catch (error) {
         console.error('Error fetching gallery:', error);
       }
@@ -33,7 +33,7 @@ export default function GalleryDetailPage() {
       try {
         const fetchedArtworks = await artworksAPI.getAllArtworks();
         setArtworks(fetchedArtworks);
-        console.log('Fetched Artworks:', fetchedArtworks); // Debug
+        console.log('Fetched Artworks:', fetchedArtworks); 
       } catch (error) {
         console.error('Error fetching artworks:', error);
       }
@@ -57,7 +57,7 @@ export default function GalleryDetailPage() {
   async function handleDeleteArtwork(artworkId) {
     try {
       const updatedGallery = { ...gallery, artworks: gallery.artworks.filter(a => a._id !== artworkId) };
-      await galleriesAPI.create(updatedGallery); // Assuming create function can update if gallery exists
+      await galleriesAPI.create(updatedGallery); 
       setGallery(updatedGallery);
     } catch (error) {
       console.error('Error deleting artwork:', error);
