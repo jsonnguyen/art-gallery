@@ -9,7 +9,9 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const artworks = await Artwork.find({}).populate('user')
+    const userId = req.query.userId;
+    const filter = userId ? { user: userId } : {};
+    const artworks = await Artwork.find(filter).populate('user')
     res.json(artworks);
 }
 
