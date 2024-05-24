@@ -46,7 +46,7 @@ function GalleryRoom({ artworks }) {
       </mesh>
       {/* Artworks */}
       {artworks.map((artwork, index) => {
-        const wallIndex = Math.floor(Math.random() * wallPositions.length);
+        const wallIndex = index % wallPositions.length;
         const offset = (index % 5) * 4 - 8;
         const position = wallPositions[wallIndex].position;
         const rotation = wallPositions[wallIndex].rotation;
@@ -68,13 +68,10 @@ function GalleryRoom({ artworks }) {
 
 function LightSwitch({ position, isOn, toggleLight }) {
   return (
-    <>
-      <mesh position={position} onClick={toggleLight}>
-        <sphereBufferGeometry args={[0.2, 32, 32]} />
-        <meshStandardMaterial color={isOn ? 'yellow' : 'gray'} />
-      </mesh>
-      {isOn && <pointLight position={position} intensity={1} />}
-    </>
+    <mesh position={position} onClick={toggleLight}>
+      <sphereBufferGeometry args={[0.5, 32, 32]} />
+      <meshStandardMaterial color={isOn ? 'yellow' : 'gray'} />
+    </mesh>
   );
 }
 
@@ -95,30 +92,27 @@ function Controls() {
 }
 
 export default function VRGallery({ artworks }) {
-  const [lights, setLights] = useState([false, false, false]);
+  const [isLightOn, setIsLightOn] = useState(false);
+  const ambientLightRef = useRef();
 
-  const toggleLight = (index) => {
-    setLights((prevLights) => {
-      const newLights = [...prevLights];
-      newLights[index] = !newLights[index];
-      return newLights;
-    });
+  const toggleLight = () => {
+    setIsLightOn((prev) => !prev);
   };
 
   useEffect(() => {
-    console.log('Artworks in VRGallery:', artworks); // Debug
-  }, [artworks]);
+    if (ambientLightRef.current) {
+      ambientLightRef.current.intensity = isLightOn ? 1 : 0.3;
+    }
+  }, [isLightOn]);
 
   return (
     <div className="canvas-container">
       <Canvas camera={{ position: [0, 2, 10], fov: 60 }}>
-        <ambientLight intensity={0.5} />
+        <ambientLight ref={ambientLightRef} intensity={0.3} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
         <Controls />
         <GalleryRoom artworks={artworks} />
-        <LightSwitch position={[5, 5, -5]} isOn={lights[0]} toggleLight={() => toggleLight(0)} />
-        <LightSwitch position={[-5, 5, -5]} isOn={lights[1]} toggleLight={() => toggleLight(1)} />
-        <LightSwitch position={[0, 5, 5]} isOn={lights[2]} toggleLight={() => toggleLight(2)} />
+        <LightSwitch position={[0, 5, 0]} isOn={isLightOn} toggleLight={toggleLight} />
       </Canvas>
     </div>
   );
