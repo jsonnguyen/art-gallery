@@ -6,13 +6,13 @@
 .hero {
   background: url('/Users/yamini/code/art-gallery/src/background.jpg') no-repeat center center fixed;
   background-size: cover;
-  padding: 100px 20px; /* Increase padding for better spacing */
-  color: #fff; /* Set text color to white for better contrast */
+  padding: 100px 20px;
+  color: #fff;
 }
 
 .hero-content {
   max-width: 600px;
-  margin: 0 auto; /* Center the content horizontally */
+  margin: 0 auto; 
 }
 
 .hero h1 {
@@ -30,13 +30,13 @@
   padding: 10px 20px;
   font-size: 1.2em;
   color: #fff;
-  background-color: #007bff; /* Update button color */
+  background-color: #007bff; 
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s ease; /* Add transition effect */
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+  background-color: #0056b3; 
 }
