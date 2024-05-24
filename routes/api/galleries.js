@@ -10,5 +10,6 @@ router.get('/all', galleriesCtrl.getAllGalleries); // All galleries
 router.get('/:id', ensureLoggedIn, galleriesCtrl.getGalleryById);
 router.delete('/:id', ensureLoggedIn, galleriesCtrl.deleteGallery);
 router.post('/:id/artworks', ensureLoggedIn, galleriesCtrl.addArtworkToGallery);
+router.delete('/:id/artworks/:artworkId', ensureLoggedIn, galleriesCtrl.removeArtworkFromGallery);
 
 module.exports = router;

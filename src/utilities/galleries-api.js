@@ -25,3 +25,8 @@ export async function deleteGallery(id) {
 export async function addArtworkToGallery(id, artworkId) {
     return sendRequest(`${BASE_URL}/${id}/artworks`, 'POST', { artworkId });
 }
+
+export async function removeArtworkFromGallery(galleryId, artworkId) {
+    return sendRequest(`${BASE_URL}/${galleryId}/artworks/${artworkId}`, 'DELETE');
+  }
+  

@@ -7,7 +7,8 @@ module.exports = {
     getAllGalleries,
     getGalleryById,
     deleteGallery,
-    addArtworkToGallery
+    addArtworkToGallery,
+    removeArtworkFromGallery
 };
 
 async function newGallery(req, res) {
@@ -89,3 +90,19 @@ async function addArtworkToGallery(req, res) {
         res.status(500).json({ error: error.message });
     }
 }
+
+async function removeArtworkFromGallery(req, res) {
+    try {
+      const gallery = await Gallery.findById(req.params.id);
+      if (gallery.user.toString() !== req.user._id) {
+        return res.status(403).json({ error: 'Unauthorized to remove artwork from this gallery' });
+      }
+      gallery.artworks = gallery.artworks.filter(artworkId => artworkId.toString() !== req.params.artworkId);
+      await gallery.save();
+      res.json(gallery);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: error.message });
+    }
+  }
+  

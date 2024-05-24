@@ -48,7 +48,7 @@ export default function GalleryDetailPage() {
       await galleriesAPI.addArtworkToGallery(id, selectedArtwork);
       const updatedGallery = await galleriesAPI.getGalleryById(id);
       setGallery(updatedGallery);
-      setSelectedArtwork(''); // Reset the selected artwork
+      setSelectedArtwork(''); 
     } catch (error) {
       console.error('Error adding artwork:', error);
     }
@@ -56,13 +56,14 @@ export default function GalleryDetailPage() {
 
   async function handleDeleteArtwork(artworkId) {
     try {
-      const updatedGallery = { ...gallery, artworks: gallery.artworks.filter(a => a._id !== artworkId) };
-      await galleriesAPI.create(updatedGallery); 
+      await galleriesAPI.removeArtworkFromGallery(id, artworkId);
+      const updatedGallery = await galleriesAPI.getGalleryById(id);
       setGallery(updatedGallery);
     } catch (error) {
       console.error('Error deleting artwork:', error);
     }
   }
+  
 
   if (!gallery) return <h1>Loading...</h1>;
 
