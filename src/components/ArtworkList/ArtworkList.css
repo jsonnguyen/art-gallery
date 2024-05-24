@@ -1,23 +1,12 @@
 .artwork-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
-    max-width: 1200px; /* Optional: set a max width for the container */
-    margin: 0 auto; /* Center the container */
-    min-height: 100vh; /* Set minimum height to 100% of the viewport height */
+    gap: 20px;
 }
 
-@media (max-width: 1024px) {
-    .artwork-container {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
-        gap: 30px; /* Maintain the same gap for medium screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .artwork-container {
-        grid-template-columns: 1fr; /* Single column for small screens */
-        gap: 20px; /* Optionally reduce the gap for small screens */
-    }
+.artwork-container::after {
+    content: '';
+    flex: auto;
 }

@@ -1,50 +1,38 @@
-.artwork {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    height: 30vh;
-    display: flex;
-    flex-direction: column;
-}
-
 .artwork-link {
     text-decoration: none;
     color: inherit;
 }
 
+.artwork {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 300px;
+    text-align: center;
+}
+
+.artwork:hover {
+    transform: scale(1.05);
+}
+
 .artwork img {
-    width: 100%;
-    height: 60%;
-    object-fit: cover;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    max-width: 100%;
+    border-bottom: 1px solid #ddd;
 }
 
 .artwork-card-details {
-    padding: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+    padding: 15px;
 }
 
-.artwork-card-details h2, .artwork-card-details p {
-    margin: 0;
-    padding: 5px 0;
+.artwork-card-details h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
 }
 
-@media (max-width: 1024px) {
-    .artwork-container {
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .artwork-container {
-        grid-template-columns: 1fr; /* Single column for small screens */
-        gap: 20px; /* Optionally reduce the gap for small screens */
-    }
+.artwork-card-details p {
+    margin: 0.2em 0;
+    font-size: 1em;
 }
