@@ -17,6 +17,7 @@ export default function Header({ user, setUser }) {
         <Link to="/">Home</Link>
         {user ? (
           <>
+            <Link to="/all-galleries">All Galleries</Link>
             <Link to="/artworks/new">New Artwork</Link>
             <Link to="/artworks">Artworks</Link>
             <Link to="/galleries">Galleries</Link>

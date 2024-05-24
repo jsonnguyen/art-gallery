@@ -52,7 +52,7 @@ async function getAllGalleries(req, res) {
 
 async function getGalleryById(req, res) {
     try {
-        const gallery = await Gallery.findById(req.params.id).populate('artworks');
+        const gallery = await Gallery.findById(req.params.id).populate('artworks').populate('user');
         res.json(gallery);
     } catch (error) {
         console.log(error);
@@ -77,6 +77,9 @@ async function deleteGallery(req, res) {
 async function addArtworkToGallery(req, res) {
     try {
         const gallery = await Gallery.findById(req.params.id);
+        if (gallery.user.toString() !== req.user._id) {
+            return res.status(403).json({ error: 'Unauthorized to add artwork to this gallery' });
+        }
         gallery.artworks.push(req.body.artworkId);
         await gallery.save();
         res.json(gallery);
