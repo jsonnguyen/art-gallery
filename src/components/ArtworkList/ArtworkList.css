@@ -5,8 +5,3 @@
     padding: 20px;
     gap: 20px;
 }
-
-.artwork-container::after {
-    content: '';
-    flex: auto;
-}

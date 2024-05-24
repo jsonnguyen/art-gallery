@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import './ArtworkListItem.css';
 
@@ -17,7 +16,7 @@ export default function ArtworkListItem({ artworkItem }) {
             <div className="artwork" onClick={() => setIsModalOpen(true)}>
                 <img src={artworkItem.image.url} alt="artwork" />
                 <div className='artwork-card-details'>
-                    <h2>Title: {artworkItem.title}</h2>
+                    <h2>{artworkItem.title}</h2>
                     <p>Artist: {artworkItem.user.name}</p>
                     <p>Art Type: {artworkItem.artType}</p>
                     <p>Date: {formattedDate}</p>

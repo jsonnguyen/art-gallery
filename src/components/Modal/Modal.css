@@ -19,6 +19,7 @@
     width: 100%;
     text-align: center;
     position: relative;
+    animation: fadeIn 0.3s;
 }
 
 .modal-close {
@@ -27,4 +28,13 @@
     right: 10px;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

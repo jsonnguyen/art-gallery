@@ -1,33 +1,33 @@
-/* src/components/Header/Header.css */
-
 .Header {
-  background-color: #333;
-  color: #fff;
+  background-color: #2c3e50;
+  color: white;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed; 
-  top: 0; 
-  width: 100%; 
-  z-index: 1000;
 }
 
 .Header h1 {
+  font-size: 1.8em;
   margin: 0;
 }
 
-.Header nav a,
-.Header nav button {
-  color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
+.Header nav {
+  display: flex;
+  gap: 15px;
 }
 
-.Header nav a:hover,
-.Header nav button:hover {
-  text-decoration: underline;
+.Header nav a, .Header nav button {
+  color: white;
+  text-decoration: none;
+  background-color: #34495e;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.Header nav a:hover, .Header nav button:hover {
+  background-color: #1abc9c;
 }

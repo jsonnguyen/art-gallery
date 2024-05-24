@@ -1,4 +1,3 @@
-// src/components/Header/Header.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
