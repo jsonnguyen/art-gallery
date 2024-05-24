@@ -5,6 +5,7 @@ import * as galleriesAPI from '../../utilities/galleries-api';
 import * as artworksAPI from '../../utilities/artwork-api';
 import './GalleryDetailPage.css';
 import VRGallery from '../../components/VRGallery/VRGallery';
+import '../../components/VRGallery/VRGallery.css';
 
 export default function GalleryDetailPage() {
   const { id } = useParams();
